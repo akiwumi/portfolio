@@ -248,148 +248,168 @@
         </div>
       </div>
 
-      <div class="projects__grid">
+      <div class="carousel">
+        <button class="carousel__arrow carousel__arrow--left" aria-label="Previous project">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <line x1="19" y1="12" x2="5" y2="12"/>
+            <polyline points="12,19 5,12 12,5"/>
+          </svg>
+        </button>
+        <button class="carousel__arrow carousel__arrow--right" aria-label="Next project">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12,5 19,12 12,19"/>
+          </svg>
+        </button>
 
-        <article class="pcard reveal" data-cat="dev">
-          <div class="pcard__thumb">
-            <div class="pcard__bg pcard__bg--1"></div>
-            <div class="pcard__overlay">
-              <a href="#" class="pcard__view">View Project &#8599;</a>
-            </div>
-          </div>
-          <div class="pcard__body">
-            <div class="pcard__meta">
-              <span class="pcard__cat">Frontend Dev</span>
-              <span class="pcard__yr">2025</span>
-            </div>
-            <h3 class="pcard__title">E-Commerce Platform</h3>
-            <p class="pcard__desc">A full-featured online store with dynamic filtering, cart system, and fluid animations built for performance.</p>
-            <div class="pcard__tags">
-              <span>React</span><span>Node.js</span><span>Tailwind</span>
-            </div>
-          </div>
-        </article>
+        <div class="projects__grid">
 
-        <article class="pcard reveal" data-cat="film">
-          <div class="pcard__thumb">
-            <div class="pcard__bg pcard__bg--2" style="background-image:url('imgs/the_test_thumb.jpg'); background-size:cover; background-position:center;"></div>
-            <div class="pcard__overlay">
-              <a href="#" class="pcard__view js-vimeo-open" data-vimeo="991526777">Watch Film &#8599;</a>
+          <article class="pcard reveal" data-cat="dev">
+            <div class="pcard__thumb">
+              <div class="pcard__bg pcard__bg--1"></div>
+              <div class="pcard__overlay">
+                <a href="#" class="pcard__view">View Project &#8599;</a>
+              </div>
             </div>
-          </div>
-          <div class="pcard__body">
-            <div class="pcard__meta">
-              <span class="pcard__cat">Short Film</span>
-              <span class="pcard__yr">2024</span>
+            <div class="pcard__body">
+              <div class="pcard__meta">
+                <span class="pcard__cat">Frontend Dev</span>
+                <span class="pcard__yr">2025</span>
+              </div>
+              <h3 class="pcard__title">E-Commerce Platform</h3>
+              <p class="pcard__desc">A full-featured online store with dynamic filtering, cart system, and fluid animations built for performance.</p>
+              <div class="pcard__tags">
+                <span>React</span><span>Node.js</span><span>Tailwind</span>
+              </div>
             </div>
-            <h3 class="pcard__title">The Test</h3>
-            <p class="pcard__desc">A short experimental film, about the price of failure in a world of crime.</p>
-            <div class="pcard__tags">
-              <span>Drama</span><span>4K</span></span>
-            </div>
-          </div>
-        </article>
+          </article>
 
-        <article class="pcard reveal" data-cat="photo">
-          <div class="pcard__thumb">
-            <div class="pcard__bg pcard__bg--3"></div>
-            <div class="pcard__overlay">
-              <a href="#" class="pcard__view">View Gallery &#8599;</a>
+          <article class="pcard reveal" data-cat="film">
+            <div class="pcard__thumb">
+              <div class="pcard__bg pcard__bg--2" style="background-image:url('imgs/the_test_thumb.jpg'); background-size:cover; background-position:center;"></div>
+              <div class="pcard__overlay">
+                <a href="#" class="pcard__view js-vimeo-open" data-vimeo="991526777">Watch Film &#8599;</a>
+              </div>
             </div>
-          </div>
-          <div class="pcard__body">
-            <div class="pcard__meta">
-              <span class="pcard__cat">Photo Series</span>
-              <span class="pcard__yr">2025</span>
+            <div class="pcard__body">
+              <div class="pcard__meta">
+                <span class="pcard__cat">Short Film</span>
+                <span class="pcard__yr">2024</span>
+              </div>
+              <h3 class="pcard__title">The Test</h3>
+              <p class="pcard__desc">A short experimental film, about the price of failure in a world of crime.</p>
+              <div class="pcard__tags">
+                <span>Drama</span><span>4K</span></span>
+              </div>
             </div>
-            <h3 class="pcard__title">Faces of the City</h3>
-            <p class="pcard__desc">A portrait series documenting the untold stories of everyday people in urban spaces. Shot in B&amp;W.</p>
-            <div class="pcard__tags">
-              <span>Portraiture</span><span>B&amp;W</span><span>Documentary</span>
-            </div>
-          </div>
-        </article>
+          </article>
 
-        <article class="pcard reveal" data-cat="dev">
-          <div class="pcard__thumb">
-            <div class="pcard__bg pcard__bg--4" style="background-image:url('imgs/movies_thumb.png'); background-size:cover; background-position:center top;"></div>
-            <div class="pcard__overlay">
-              <a href="https://movies-db-project.vercel.app" class="pcard__view" target="_blank" rel="noopener noreferrer">View Project &#8599;</a>
+          <article class="pcard reveal" data-cat="photo">
+            <div class="pcard__thumb">
+              <div class="pcard__bg pcard__bg--3"></div>
+              <div class="pcard__overlay">
+                <a href="#" class="pcard__view">View Gallery &#8599;</a>
+              </div>
             </div>
-          </div>
-          <div class="pcard__body">
-            <div class="pcard__meta">
-              <span class="pcard__cat">Web App</span>
-              <span class="pcard__yr">2025</span>
+            <div class="pcard__body">
+              <div class="pcard__meta">
+                <span class="pcard__cat">Photo Series</span>
+                <span class="pcard__yr">2025</span>
+              </div>
+              <h3 class="pcard__title">Faces of the City</h3>
+              <p class="pcard__desc">A portrait series documenting the untold stories of everyday people in urban spaces. Shot in B&amp;W.</p>
+              <div class="pcard__tags">
+                <span>Portraiture</span><span>B&amp;W</span><span>Documentary</span>
+              </div>
             </div>
-            <h3 class="pcard__title">Movie Database</h3>
-            <p class="pcard__desc">A school project to create a movie database.</p>
-            <div class="pcard__tags">
-              <span>React</span><span>Tailwind</span><span>Next.js</span><span>JavaScript</span>
-            </div>
-          </div>
-        </article>
+          </article>
 
-        <article class="pcard reveal" data-cat="film">
-          <div class="pcard__thumb">
-            <div class="pcard__bg pcard__bg--2" style="background-image:url('imgs/unhcr_thumb.jpg'); background-size:cover; background-position:center;"></div>
-            <div class="pcard__overlay">
-              <a href="#" class="pcard__view js-vimeo-open" data-vimeo="8850062">Watch Film &#8599;</a>
+          <article class="pcard reveal" data-cat="dev">
+            <div class="pcard__thumb">
+              <div class="pcard__bg pcard__bg--4" style="background-image:url('imgs/movies_thumb.png'); background-size:cover; background-position:center top;"></div>
+              <div class="pcard__overlay">
+                <a href="https://movies-db-project.vercel.app" class="pcard__view" target="_blank" rel="noopener noreferrer">View Project &#8599;</a>
+              </div>
             </div>
-          </div>
-          <div class="pcard__body">
-            <div class="pcard__meta">
-              <span class="pcard__cat">Music Video</span>
-              <span class="pcard__yr">1993</span>
+            <div class="pcard__body">
+              <div class="pcard__meta">
+                <span class="pcard__cat">Web App</span>
+                <span class="pcard__yr">2025</span>
+              </div>
+              <h3 class="pcard__title">Movie Database</h3>
+              <p class="pcard__desc">A school project to create a movie database.</p>
+              <div class="pcard__tags">
+                <span>React</span><span>Tailwind</span><span>Next.js</span><span>JavaScript</span>
+              </div>
             </div>
-            <h3 class="pcard__title">Hate and Destruction</h3>
-            <p class="pcard__desc">A music video for the United Nations High Commissioner for Refugees, as part of a campaing highlighting the plight of refugees.</p>
-            <div class="pcard__tags">
-              <span>Music Video</span><span>Super 35mm film</span><span>awareness campaign</span>
-            </div>
-          </div>
-        </article>
+          </article>
 
-        <article class="pcard reveal" data-cat="dev">
-          <div class="pcard__thumb">
-            <div class="pcard__bg pcard__bg--6"></div>
-            <div class="pcard__overlay">
-              <a href="#" class="pcard__view">View Project &#8599;</a>
+          <article class="pcard reveal" data-cat="film">
+            <div class="pcard__thumb">
+              <div class="pcard__bg pcard__bg--2" style="background-image:url('imgs/unhcr_thumb.jpg'); background-size:cover; background-position:center;"></div>
+              <div class="pcard__overlay">
+                <a href="#" class="pcard__view js-vimeo-open" data-vimeo="8850062">Watch Film &#8599;</a>
+              </div>
             </div>
-          </div>
-          <div class="pcard__body">
-            <div class="pcard__meta">
-              <span class="pcard__cat">Website</span>
-              <span class="pcard__yr">2024</span>
+            <div class="pcard__body">
+              <div class="pcard__meta">
+                <span class="pcard__cat">Music Video</span>
+                <span class="pcard__yr">1993</span>
+              </div>
+              <h3 class="pcard__title">Hate and Destruction</h3>
+              <p class="pcard__desc">A music video for the United Nations High Commissioner for Refugees, as part of a campaing highlighting the plight of refugees.</p>
+              <div class="pcard__tags">
+                <span>Music Video</span><span>Super 35mm film</span><span>awareness campaign</span>
+              </div>
             </div>
-            <h3 class="pcard__title">Film Festival Site</h3>
-            <p class="pcard__desc">An immersive website for an indie film festival &mdash; video backgrounds, dynamic scheduling, and cinematic hover effects.</p>
-            <div class="pcard__tags">
-              <span>HTML/CSS</span><span>JavaScript</span><span>GSAP</span>
-            </div>
-          </div>
-        </article>
+          </article>
 
-        <article class="pcard reveal" data-cat="film">
-          <div class="pcard__thumb">
-            <div class="pcard__bg" style="background-image:url('imgs/1046_thumb.jpg'); background-size:cover; background-position:center;"></div>
-            <div class="pcard__overlay">
-              <a href="#" class="pcard__view js-vimeo-open" data-vimeo="717076887">Watch Film &#8599;</a>
+          <article class="pcard reveal" data-cat="dev">
+            <div class="pcard__thumb">
+              <div class="pcard__bg pcard__bg--6"></div>
+              <div class="pcard__overlay">
+                <a href="#" class="pcard__view">View Project &#8599;</a>
+              </div>
             </div>
-          </div>
-          <div class="pcard__body">
-            <div class="pcard__meta">
-              <span class="pcard__cat">Commercial</span>
-              <span class="pcard__yr">2022</span>
+            <div class="pcard__body">
+              <div class="pcard__meta">
+                <span class="pcard__cat">Website</span>
+                <span class="pcard__yr">2024</span>
+              </div>
+              <h3 class="pcard__title">Film Festival Site</h3>
+              <p class="pcard__desc">An immersive website for an indie film festival &mdash; video backgrounds, dynamic scheduling, and cinematic hover effects.</p>
+              <div class="pcard__tags">
+                <span>HTML/CSS</span><span>JavaScript</span><span>GSAP</span>
+              </div>
             </div>
-            <h3 class="pcard__title">1046.se</h3>
-            <p class="pcard__desc">An integration commercial for the 1046 Group in Sweden, focusing on social integration.</p>
-            <div class="pcard__tags">
-              <span>Commercial</span><span>4K</span><span>Sweden</span>
-            </div>
-          </div>
-        </article>
+          </article>
 
+          <article class="pcard reveal" data-cat="film">
+            <div class="pcard__thumb">
+              <div class="pcard__bg" style="background-image:url('imgs/1046_thumb.jpg'); background-size:cover; background-position:center;"></div>
+              <div class="pcard__overlay">
+                <a href="#" class="pcard__view js-vimeo-open" data-vimeo="717076887">Watch Film &#8599;</a>
+              </div>
+            </div>
+            <div class="pcard__body">
+              <div class="pcard__meta">
+                <span class="pcard__cat">Commercial</span>
+                <span class="pcard__yr">2022</span>
+              </div>
+              <h3 class="pcard__title">1046.se</h3>
+              <p class="pcard__desc">An integration commercial for the 1046 Group in Sweden, focusing on social integration.</p>
+              <div class="pcard__tags">
+                <span>Commercial</span><span>4K</span><span>Sweden</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+        <div class="carousel__counter">
+          <span class="carousel__current">01</span>
+          <span class="carousel__divider">/</span>
+          <span class="carousel__total">07</span>
+        </div>
       </div>
     </div>
   </section>

@@ -244,103 +244,62 @@ const activeObs = new IntersectionObserver((entries) => {
 
 sections.forEach(s => activeObs.observe(s));
 
-/* ---- Auto-scroll on hover for projects grid ------------------ */
+/* ---- Projects Carousel -------------------------------------- */
 const projectsGrid = qs('.projects__grid');
-let scrollInterval = null;
+const arrowLeft    = qs('.carousel__arrow--left');
+const arrowRight   = qs('.carousel__arrow--right');
+const counterCur   = qs('.carousel__current');
+const counterTot   = qs('.carousel__total');
 
-console.log('Projects grid found:', !!projectsGrid);
-console.log('Projects grid element:', projectsGrid);
-
-if (projectsGrid) {
-  // Test function to manually trigger scroll
-  window.testScroll = () => {
-    console.log('Testing scroll manually');
-    scrollInterval = setInterval(() => {
-      projectsGrid.scrollLeft += 5;
-      console.log('Current scrollLeft:', projectsGrid.scrollLeft);
-      if (projectsGrid.scrollLeft >= projectsGrid.scrollWidth - projectsGrid.clientWidth) {
-        projectsGrid.scrollLeft = 0;
-      }
-    }, 20);
-  };
-  
-  window.stopScroll = () => {
-    if (scrollInterval) {
-      clearInterval(scrollInterval);
-      scrollInterval = null;
-      console.log('Scroll stopped');
-    }
-  };
-  
-  // Try multiple event listeners to catch the hover
-  projectsGrid.addEventListener('mouseenter', () => {
-    console.log('Mouse entered projects grid');
-    console.log('Scroll width:', projectsGrid.scrollWidth);
-    console.log('Client width:', projectsGrid.clientWidth);
-    console.log('Current scrollLeft:', projectsGrid.scrollLeft);
-    scrollInterval = setInterval(() => {
-      // Scroll to the right - faster speed
-      projectsGrid.scrollLeft += 5;
-      
-      // If we reach the end, loop back to start
-      if (projectsGrid.scrollLeft >= projectsGrid.scrollWidth - projectsGrid.clientWidth) {
-        projectsGrid.scrollLeft = 0;
-      }
-    }, 20); // Faster interval
-  });
-  
-  projectsGrid.addEventListener('mouseover', () => {
-    console.log('Mouse over projects grid - alternative event');
-  });
-  
-  projectsGrid.addEventListener('mouseleave', () => {
-    console.log('Mouse left projects grid');
-    if (scrollInterval) {
-      clearInterval(scrollInterval);
-      scrollInterval = null;
-    }
-  });
-  
-  // Also try mouseenter on parent container
-  const projectsSection = projectsGrid.closest('.projects');
-  if (projectsSection) {
-    projectsSection.addEventListener('mouseenter', (e) => {
-      if (e.target === projectsGrid || projectsGrid.contains(e.target)) {
-        console.log('Mouse entered via section event');
-      }
-    });
+if (projectsGrid && arrowLeft && arrowRight) {
+  function getVisibleCards() {
+    return qsa('.pcard:not(.hide)', projectsGrid);
   }
-  
-  // Allow manual scroll when user interacts
-  projectsGrid.addEventListener('wheel', (e) => {
-    if (scrollInterval) {
-      clearInterval(scrollInterval);
-      scrollInterval = null;
-    }
-    e.preventDefault();
-    projectsGrid.scrollLeft += e.deltaY;
+
+  function getCardWidth() {
+    const card = getVisibleCards()[0];
+    if (!card) return 360;
+    return card.offsetWidth + 1; // +1 for the gap (1px from background trick)
+  }
+
+  function updateCounter() {
+    const cards     = getVisibleCards();
+    const total     = cards.length;
+    const cardW     = getCardWidth();
+    const scrollPos = projectsGrid.scrollLeft;
+    const current   = Math.round(scrollPos / cardW) + 1;
+
+    if (counterCur) counterCur.textContent = String(Math.min(current, total)).padStart(2, '0');
+    if (counterTot) counterTot.textContent = String(total).padStart(2, '0');
+
+    const atStart = scrollPos <= 2;
+    const atEnd   = scrollPos >= projectsGrid.scrollWidth - projectsGrid.clientWidth - 2;
+    arrowLeft.classList.toggle('at-end', atStart);
+    arrowRight.classList.toggle('at-end', atEnd);
+  }
+
+  arrowRight.addEventListener('click', () => {
+    projectsGrid.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
   });
-  
-  // Fallback: click to start/stop scrolling
-  let isScrolling = false;
-  projectsGrid.addEventListener('click', () => {
-    if (isScrolling) {
-      if (scrollInterval) {
-        clearInterval(scrollInterval);
-        scrollInterval = null;
-      }
-      isScrolling = false;
-      console.log('Click: stopped scrolling');
-    } else {
-      scrollInterval = setInterval(() => {
-        projectsGrid.scrollLeft += 5;
-        if (projectsGrid.scrollLeft >= projectsGrid.scrollWidth - projectsGrid.clientWidth) {
-          projectsGrid.scrollLeft = 0;
-        }
-      }, 20);
-      isScrolling = true;
-      console.log('Click: started scrolling');
-    }
+
+  arrowLeft.addEventListener('click', () => {
+    projectsGrid.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
+  });
+
+  projectsGrid.addEventListener('scroll', updateCounter, { passive: true });
+
+  projectsGrid.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    projectsGrid.scrollBy({ left: e.deltaY, behavior: 'auto' });
+  });
+
+  updateCounter();
+
+  const filterObserver = new MutationObserver(() => {
+    requestAnimationFrame(updateCounter);
+  });
+  qsa('.pcard', projectsGrid).forEach(card => {
+    filterObserver.observe(card, { attributes: true, attributeFilter: ['class'] });
   });
 }
 

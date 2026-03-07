@@ -802,6 +802,67 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
 }
 .pcard.hide { display: none; }
 
+/* Carousel wrapper & arrows */
+.carousel {
+  position: relative;
+}
+
+.carousel__arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 10;
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--rule);
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(8px);
+  color: var(--black);
+  transition: background .25s var(--ease), color .25s var(--ease),
+              border-color .25s var(--ease), transform .25s var(--ease),
+              opacity .25s var(--ease);
+  transform: translateY(-50%);
+  opacity: 0;
+}
+.carousel:hover .carousel__arrow {
+  opacity: 1;
+}
+.carousel__arrow:hover {
+  background: var(--red);
+  border-color: var(--red);
+  color: var(--white);
+  transform: translateY(-50%) scale(1.06);
+}
+.carousel__arrow--left  { left: 16px; }
+.carousel__arrow--right { right: 16px; }
+.carousel__arrow.at-end {
+  opacity: .25;
+  pointer-events: none;
+}
+
+.carousel__counter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  padding: 16px 4px 0;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  color: var(--mid);
+}
+.carousel__current {
+  color: var(--red);
+  font-weight: 700;
+}
+.carousel__divider {
+  color: var(--rule);
+  margin: 0 2px;
+}
+
 /* ---- CONTACT --------------------------------------------- */
 .contact {
   background: var(--paper);
@@ -993,6 +1054,9 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
   .skills__grid       { grid-template-columns: 1fr; border-left: none; }
   .skill-block        { border-right: none; border-bottom: 1px solid var(--rule); border-left: 1px solid var(--rule); }
   .projects__grid     { grid-auto-columns: 300px; }
+  .carousel__arrow    { width: 44px; height: 44px; }
+  .carousel__arrow--left  { left: 10px; }
+  .carousel__arrow--right { right: 10px; }
   .disciplines        { grid-template-columns: 1fr; }
   .discipline { border-right: none; border-bottom: 1px solid var(--rule); padding: 40px 0; }
   .discipline:nth-child(2),
@@ -1030,6 +1094,9 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
 
 @media (max-width: 640px) {
   .projects__grid { grid-auto-columns: 280px; }
+  .carousel__arrow { width: 40px; height: 40px; }
+  .carousel__arrow svg { width: 16px; height: 16px; }
+  .carousel:hover .carousel__arrow { opacity: 1; }
   .hero__name     { font-size: clamp(72px, 20vw, 120px); }
   .about__stats   { flex-direction: column; gap: 24px; }
 }
