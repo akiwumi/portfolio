@@ -248,25 +248,68 @@ sections.forEach(s => activeObs.observe(s));
 const projectsGrid = qs('.projects__grid');
 let scrollInterval = null;
 
+console.log('Projects grid found:', !!projectsGrid);
+console.log('Projects grid element:', projectsGrid);
+
 if (projectsGrid) {
-  projectsGrid.addEventListener('mouseenter', () => {
+  // Test function to manually trigger scroll
+  window.testScroll = () => {
+    console.log('Testing scroll manually');
     scrollInterval = setInterval(() => {
-      // Scroll to the right
-      projectsGrid.scrollLeft += 2;
+      projectsGrid.scrollLeft += 5;
+      console.log('Current scrollLeft:', projectsGrid.scrollLeft);
+      if (projectsGrid.scrollLeft >= projectsGrid.scrollWidth - projectsGrid.clientWidth) {
+        projectsGrid.scrollLeft = 0;
+      }
+    }, 20);
+  };
+  
+  window.stopScroll = () => {
+    if (scrollInterval) {
+      clearInterval(scrollInterval);
+      scrollInterval = null;
+      console.log('Scroll stopped');
+    }
+  };
+  
+  // Try multiple event listeners to catch the hover
+  projectsGrid.addEventListener('mouseenter', () => {
+    console.log('Mouse entered projects grid');
+    console.log('Scroll width:', projectsGrid.scrollWidth);
+    console.log('Client width:', projectsGrid.clientWidth);
+    console.log('Current scrollLeft:', projectsGrid.scrollLeft);
+    scrollInterval = setInterval(() => {
+      // Scroll to the right - faster speed
+      projectsGrid.scrollLeft += 5;
       
       // If we reach the end, loop back to start
       if (projectsGrid.scrollLeft >= projectsGrid.scrollWidth - projectsGrid.clientWidth) {
         projectsGrid.scrollLeft = 0;
       }
-    }, 30);
+    }, 20); // Faster interval
+  });
+  
+  projectsGrid.addEventListener('mouseover', () => {
+    console.log('Mouse over projects grid - alternative event');
   });
   
   projectsGrid.addEventListener('mouseleave', () => {
+    console.log('Mouse left projects grid');
     if (scrollInterval) {
       clearInterval(scrollInterval);
       scrollInterval = null;
     }
   });
+  
+  // Also try mouseenter on parent container
+  const projectsSection = projectsGrid.closest('.projects');
+  if (projectsSection) {
+    projectsSection.addEventListener('mouseenter', (e) => {
+      if (e.target === projectsGrid || projectsGrid.contains(e.target)) {
+        console.log('Mouse entered via section event');
+      }
+    });
+  }
   
   // Allow manual scroll when user interacts
   projectsGrid.addEventListener('wheel', (e) => {
@@ -276,6 +319,28 @@ if (projectsGrid) {
     }
     e.preventDefault();
     projectsGrid.scrollLeft += e.deltaY;
+  });
+  
+  // Fallback: click to start/stop scrolling
+  let isScrolling = false;
+  projectsGrid.addEventListener('click', () => {
+    if (isScrolling) {
+      if (scrollInterval) {
+        clearInterval(scrollInterval);
+        scrollInterval = null;
+      }
+      isScrolling = false;
+      console.log('Click: stopped scrolling');
+    } else {
+      scrollInterval = setInterval(() => {
+        projectsGrid.scrollLeft += 5;
+        if (projectsGrid.scrollLeft >= projectsGrid.scrollWidth - projectsGrid.clientWidth) {
+          projectsGrid.scrollLeft = 0;
+        }
+      }, 20);
+      isScrolling = true;
+      console.log('Click: started scrolling');
+    }
   });
 }
 
