@@ -244,6 +244,41 @@ const activeObs = new IntersectionObserver((entries) => {
 
 sections.forEach(s => activeObs.observe(s));
 
+/* ---- Auto-scroll on hover for projects grid ------------------ */
+const projectsGrid = qs('.projects__grid');
+let scrollInterval = null;
+
+if (projectsGrid) {
+  projectsGrid.addEventListener('mouseenter', () => {
+    scrollInterval = setInterval(() => {
+      // Scroll to the right
+      projectsGrid.scrollLeft += 2;
+      
+      // If we reach the end, loop back to start
+      if (projectsGrid.scrollLeft >= projectsGrid.scrollWidth - projectsGrid.clientWidth) {
+        projectsGrid.scrollLeft = 0;
+      }
+    }, 30);
+  });
+  
+  projectsGrid.addEventListener('mouseleave', () => {
+    if (scrollInterval) {
+      clearInterval(scrollInterval);
+      scrollInterval = null;
+    }
+  });
+  
+  // Allow manual scroll when user interacts
+  projectsGrid.addEventListener('wheel', (e) => {
+    if (scrollInterval) {
+      clearInterval(scrollInterval);
+      scrollInterval = null;
+    }
+    e.preventDefault();
+    projectsGrid.scrollLeft += e.deltaY;
+  });
+}
+
 /* ---- Vimeo Modal ------------------------------------------- */
 const vModal  = qs('#vimeoModal');
 const vFrame  = qs('#vimeoFrame');
