@@ -829,6 +829,10 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
 .carousel:hover .carousel__arrow {
   opacity: 1;
 }
+.carousel:hover .carousel__arrow.at-end {
+  opacity: .25;
+  pointer-events: none;
+}
 .carousel__arrow:hover {
   background: var(--red);
   border-color: var(--red);
@@ -837,10 +841,6 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
 }
 .carousel__arrow--left  { left: 16px; }
 .carousel__arrow--right { right: 16px; }
-.carousel__arrow.at-end {
-  opacity: .25;
-  pointer-events: none;
-}
 
 .carousel__counter {
   display: flex;
