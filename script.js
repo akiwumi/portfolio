@@ -191,7 +191,7 @@ fBtns.forEach(btn => {
 const form      = qs('#contactForm');
 const submitBtn = qs('#submitBtn');
 
-form?.addEventListener('submit', e => {
+form?.addEventListener('submit', async e => {
   e.preventDefault();
   if (!form.checkValidity()) { form.reportValidity(); return; }
 
@@ -199,24 +199,35 @@ form?.addEventListener('submit', e => {
   const icon  = qs('svg',        submitBtn);
   submitBtn.disabled = true;
 
-  // Sending state
   if (label) label.textContent = 'Sending…';
   if (icon)  icon.style.opacity = '0';
 
+  try {
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+
+    if (res.ok) {
+      if (label) label.textContent = 'Message Sent ✓';
+      submitBtn.style.background = '#2d6a4f';
+      form.reset();
+    } else {
+      if (label) label.textContent = 'Error — Try Again';
+      submitBtn.style.background = '#8a0018';
+    }
+  } catch {
+    if (label) label.textContent = 'Error — Try Again';
+    submitBtn.style.background = '#8a0018';
+  }
+
   setTimeout(() => {
-    // Success state
-    if (label) label.textContent = 'Message Sent ✓';
-    submitBtn.style.background = '#2d6a4f';
-
-    form.reset();
-
-    setTimeout(() => {
-      if (label) label.textContent = 'Send Message';
-      submitBtn.style.background = '';
-      if (icon)  icon.style.opacity = '1';
-      submitBtn.disabled = false;
-    }, 3500);
-  }, 1600);
+    if (label) label.textContent = 'Send Message';
+    submitBtn.style.background = '';
+    if (icon)  icon.style.opacity = '1';
+    submitBtn.disabled = false;
+  }, 3500);
 });
 
 /* ---- Parallax on hero portrait ----------------------------- */
