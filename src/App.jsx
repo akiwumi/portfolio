@@ -22,8 +22,7 @@ function App() {
   <div id="cursorRing" className="cursor-ring"></div>
       {/* Fixed Video Background */}
   <div className="portrait-bg">
-    <video className="portrait-bg__video" autoPlay muted loop playsInline preload="auto">
-      <source src="/hero_montage.mp4" type="video/mp4" />
+    <video className="portrait-bg__video" autoPlay muted loop playsInline preload="none" data-src="/hero_montage.mp4">
     </video>
     <div className="portrait-bg__gradient"></div>
   </div>
@@ -106,7 +105,7 @@ function App() {
 
       <div className="about__grid">
         <div className="about__portrait reveal">
-          <img src="/Eugene-Akiwumi-portrait.png" alt="Eugene Akiwumi" />
+          <img src="/Eugene-Akiwumi-portrait.png" alt="Eugene Akiwumi" loading="lazy" decoding="async" />
         </div>
         <blockquote className="pull-quote reveal">
           &ldquo;I build things that don&rsquo;t just work perfectly &mdash; they <em>feel</em> right.&rdquo;
@@ -257,7 +256,7 @@ function App() {
 
           <article className="pcard reveal" data-cat="dev">
             <div className="pcard__thumb">
-              <div className="pcard__bg" style={{ backgroundImage: "url('/imgs/walantu.png')", backgroundSize: "cover", backgroundPosition: "center top" }}></div>
+              <div className="pcard__bg" data-bg="/imgs/walantu.png" data-position="center top"></div>
               <div className="pcard__overlay">
                 <a href="https://walantu.vercel.app/index.html" className="pcard__view" target="_blank" rel="noopener noreferrer">View Project &#8599;</a>
               </div>
@@ -277,7 +276,7 @@ function App() {
 
           <article className="pcard reveal" data-cat="dev">
             <div className="pcard__thumb">
-              <div className="pcard__bg" style={{ backgroundImage: "url('/imgs/at_thumb.png')", backgroundSize: "cover", backgroundPosition: "center" }}></div>
+              <div className="pcard__bg" data-bg="/imgs/at_thumb.png" data-position="center"></div>
               <div className="pcard__overlay">
                 <a href="https://audiotypebe.onrender.com" className="pcard__view" target="_blank" rel="noopener noreferrer">View Project &#8599;</a>
               </div>
@@ -297,7 +296,7 @@ function App() {
 
           <article className="pcard reveal" data-cat="film">
             <div className="pcard__thumb">
-              <div className="pcard__bg pcard__bg--2" style={{ backgroundImage: "url('/imgs/the_test_thumb.jpg')", backgroundSize: "cover", backgroundPosition: "center" }}></div>
+              <div className="pcard__bg pcard__bg--2" data-bg="/imgs/the_test_thumb.jpg" data-position="center"></div>
               <div className="pcard__overlay">
                 <a href="#" className="pcard__view js-vimeo-open" data-vimeo="991526777">Watch Film &#8599;</a>
               </div>
@@ -317,7 +316,7 @@ function App() {
 
           <article className="pcard reveal" data-cat="photo">
             <div className="pcard__thumb">
-              <div className="pcard__bg" style={{ backgroundImage: "url('/imgs/photo_thumb.jpg')", backgroundSize: "cover", backgroundPosition: "center" }}></div>
+              <div className="pcard__bg" data-bg="/imgs/photo_thumb.jpg" data-position="center"></div>
               <div className="pcard__overlay">
                 <a href="https://www.akiwumiphoto.com" className="pcard__view" target="_blank" rel="noopener noreferrer">View Gallery &#8599;</a>
               </div>
@@ -337,7 +336,7 @@ function App() {
 
           <article className="pcard reveal" data-cat="dev">
             <div className="pcard__thumb">
-              <div className="pcard__bg pcard__bg--4" style={{ backgroundImage: "url('/imgs/movies_thumb.png')", backgroundSize: "cover", backgroundPosition: "center top" }}></div>
+              <div className="pcard__bg pcard__bg--4" data-bg="/imgs/movies_thumb.png" data-position="center top"></div>
               <div className="pcard__overlay">
                 <a href="https://movies-db-project.vercel.app" className="pcard__view" target="_blank" rel="noopener noreferrer">View Project &#8599;</a>
               </div>
@@ -357,7 +356,7 @@ function App() {
 
           <article className="pcard reveal" data-cat="film">
             <div className="pcard__thumb">
-              <div className="pcard__bg pcard__bg--2" style={{ backgroundImage: "url('/imgs/unhcr_thumb.jpg')", backgroundSize: "cover", backgroundPosition: "center" }}></div>
+              <div className="pcard__bg pcard__bg--2" data-bg="/imgs/unhcr_thumb.jpg" data-position="center"></div>
               <div className="pcard__overlay">
                 <a href="#" className="pcard__view js-vimeo-open" data-vimeo="8850062">Watch Film &#8599;</a>
               </div>
@@ -377,7 +376,7 @@ function App() {
 
           <article className="pcard reveal" data-cat="dev">
             <div className="pcard__thumb">
-              <div className="pcard__bg" style={{ backgroundImage: "url('/imgs/ca_thumb.png')", backgroundSize: "cover", backgroundPosition: "center" }}></div>
+              <div className="pcard__bg" data-bg="/imgs/ca_thumb.png" data-position="center"></div>
               <div className="pcard__overlay">
                 <a href="https://connectafrica-woad.vercel.app" className="pcard__view" target="_blank" rel="noopener noreferrer">View Project &#8599;</a>
               </div>
@@ -397,7 +396,7 @@ function App() {
 
           <article className="pcard reveal" data-cat="dev">
             <div className="pcard__thumb">
-              <div className="pcard__bg" style={{ backgroundImage: "url('/imgs/weather_thumb.png')", backgroundSize: "cover", backgroundPosition: "center top" }}></div>
+              <div className="pcard__bg" data-bg="/imgs/weather_thumb.png" data-position="center top"></div>
               <div className="pcard__overlay">
                 <a href="https://weather-phi-ten-23.vercel.app" className="pcard__view" target="_blank" rel="noopener noreferrer">View Project &#8599;</a>
               </div>
@@ -417,7 +416,7 @@ function App() {
 
           <article className="pcard reveal" data-cat="dev">
             <div className="pcard__thumb">
-              <div className="pcard__bg" style={{ backgroundImage: "url('/imgs/umoja_thumb.png')", backgroundSize: "cover", backgroundPosition: "center top" }}></div>
+              <div className="pcard__bg" data-bg="/imgs/umoja_thumb.png" data-position="center top"></div>
               <div className="pcard__overlay">
                 <a href="https://umoja-ten.vercel.app" className="pcard__view" target="_blank" rel="noopener noreferrer">View Project &#8599;</a>
               </div>
@@ -437,7 +436,7 @@ function App() {
 
           <article className="pcard reveal" data-cat="dev">
             <div className="pcard__thumb">
-              <div className="pcard__bg" style={{ backgroundImage: "url('/imgs/ophini_thumb.png')", backgroundSize: "cover", backgroundPosition: "center" }}></div>
+              <div className="pcard__bg" data-bg="/imgs/ophini_thumb.png" data-position="center"></div>
               <div className="pcard__overlay">
                 <a href="https://ophinient.vercel.app" className="pcard__view" target="_blank" rel="noopener noreferrer">View Project &#8599;</a>
               </div>
@@ -457,7 +456,7 @@ function App() {
 
           <article className="pcard reveal" data-cat="film">
             <div className="pcard__thumb">
-              <div className="pcard__bg" style={{ backgroundImage: "url('/imgs/1046_thumb.jpg')", backgroundSize: "cover", backgroundPosition: "center" }}></div>
+              <div className="pcard__bg" data-bg="/imgs/1046_thumb.jpg" data-position="center"></div>
               <div className="pcard__overlay">
                 <a href="#" className="pcard__view js-vimeo-open" data-vimeo="717076887">Watch Film &#8599;</a>
               </div>
@@ -477,7 +476,7 @@ function App() {
 
           <article className="pcard reveal" data-cat="film">
             <div className="pcard__thumb">
-              <div className="pcard__bg" style={{ backgroundImage: "url('/imgs/schiff_thumb.png')", backgroundSize: "cover", backgroundPosition: "center" }}></div>
+              <div className="pcard__bg" data-bg="/imgs/schiff_thumb.png" data-position="center"></div>
               <div className="pcard__overlay">
                 <a href="#" className="pcard__view js-vimeo-open" data-vimeo="312270602">Watch Film &#8599;</a>
               </div>
@@ -497,7 +496,7 @@ function App() {
 
           <article className="pcard reveal" data-cat="film">
             <div className="pcard__thumb">
-              <div className="pcard__bg" style={{ backgroundImage: "url('/imgs/van_thumb.png')", backgroundSize: "cover", backgroundPosition: "center" }}></div>
+              <div className="pcard__bg" data-bg="/imgs/van_thumb.png" data-position="center"></div>
               <div className="pcard__overlay">
                 <a href="#" className="pcard__view js-vimeo-open" data-vimeo="995157270">Watch Film &#8599;</a>
               </div>
@@ -517,7 +516,7 @@ function App() {
 
           <article className="pcard reveal" data-cat="film">
             <div className="pcard__thumb">
-              <div className="pcard__bg" style={{ backgroundImage: "url('/imgs/master_thumb.png')", backgroundSize: "cover", backgroundPosition: "center" }}></div>
+              <div className="pcard__bg" data-bg="/imgs/master_thumb.png" data-position="center"></div>
               <div className="pcard__overlay">
                 <a href="#" className="pcard__view js-vimeo-open" data-vimeo="325045080">Watch Film &#8599;</a>
               </div>
@@ -648,7 +647,7 @@ function App() {
     <div className="vmodal__wrap">
       <button className="vmodal__close" aria-label="Close">&times;</button>
       <div className="vmodal__frame">
-        <iframe id="vimeoFrame" src="about:blank" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>
+        <iframe id="vimeoFrame" title="Vimeo film player" src="about:blank" frameBorder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>
       </div>
     </div>
   </div>
