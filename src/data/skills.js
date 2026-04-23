@@ -1,0 +1,47 @@
+export const skillGroups = [
+  {
+    title: "Frontend Development",
+    skills: [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "GSAP",
+      "Node.js",
+      "REST APIs",
+      "Git / GitHub",
+      "Figma",
+      "Responsive Design",
+    ],
+  },
+  {
+    title: "Filmmaking",
+    skills: [
+      "Directing",
+      "Cinematography",
+      "Pre-Production",
+      "Scriptwriting",
+      "Video Editing",
+      "Color Grading",
+      "DaVinci Resolve",
+      "Final Cut Pro",
+      "Storytelling",
+    ],
+  },
+  {
+    title: "Photography",
+    skills: [
+      "Portraiture",
+      "Documentary",
+      "Street Photography",
+      "Landscape",
+      "Studio Lighting",
+      "Post-Processing",
+      "Adobe Lightroom",
+      "Photoshop",
+    ],
+  },
+];

@@ -136,6 +136,10 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
   box-shadow: 0 6px 24px rgba(180,0,32,.25);
 }
 .btn-full { width: 100%; justify-content: center; }
+.btn:disabled {
+  opacity: .7;
+  pointer-events: none;
+}
 
 /* ---- FIXED PORTRAIT BACKGROUND ---------------------------- */
 .portrait-bg {
@@ -229,7 +233,11 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
   background: var(--red);
   transition: width .25s var(--ease);
 }
-.nav__link:hover::after { width: 100%; }
+.nav__link:hover::after,
+.nav__link.active::after { width: 100%; }
+.nav__link.active { color: var(--red); }
+.nav .nav__cta.active { color: var(--white) !important; }
+.nav.scrolled .nav__cta.active { color: var(--red) !important; }
 .nav.scrolled .nav__link:hover { color: var(--red); }
 .nav__cta {
   border: 1px solid;
@@ -970,6 +978,12 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
 }
 .cform__group select option { background: var(--white); }
 .cform__group textarea { min-height: 130px; resize: vertical; line-height: 1.65; }
+.form-status {
+  font-size: 13px;
+  line-height: 1.6;
+}
+.form-status--success { color: #2d6a4f; }
+.form-status--error { color: #8a0018; }
 
 /* ---- FOOTER ---------------------------------------------- */
 .footer {
@@ -1015,6 +1029,8 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
   inset: 0;
   background: rgba(8,8,8,.92);
   backdrop-filter: blur(6px);
+  width: 100%;
+  height: 100%;
 }
 .vmodal__wrap {
   position: relative;
@@ -1060,7 +1076,7 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
   .about__grid        { grid-template-columns: 200px 1fr 1.4fr; gap: 48px; }
   .skills__grid       { grid-template-columns: 1fr; border-left: none; }
   .skill-block        { border-right: none; border-bottom: 1px solid var(--rule); border-left: 1px solid var(--rule); }
-  .projects__grid     { grid-auto-columns: 300px; }
+  .pcard              { flex-basis: 300px; min-width: 300px; }
   .carousel__arrow    { width: 44px; height: 44px; }
   .carousel__arrow--left  { left: 10px; }
   .carousel__arrow--right { right: 10px; }
@@ -1100,7 +1116,7 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
 }
 
 @media (max-width: 640px) {
-  .projects__grid { grid-auto-columns: 280px; }
+  .pcard { flex-basis: 280px; min-width: 280px; }
   .carousel__arrow { width: 40px; height: 40px; }
   .carousel__arrow svg { width: 16px; height: 16px; }
   .carousel:hover .carousel__arrow { opacity: 1; }
